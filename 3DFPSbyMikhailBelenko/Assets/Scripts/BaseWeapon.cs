@@ -24,5 +24,10 @@ public abstract class BaseWeapon : BaseObject
     private void Update()
     {
         _rechargeTimer.Update();
+
+        if (_rechargeTimer.IsEvent)
+        {
+            _isFire = true;
+        }
     }
 }
