@@ -28,7 +28,7 @@ public class Flashlight : BaseObject
     protected override void Awake()
     {
         base.Awake();
-        slider = GetComponentInChildren<Slider>();
+        slider = _canvasMainCamera.GetComponentInChildren<Slider>();
         sliderColor = slider.fillRect.GetComponentInChildren<Image>();
     }
 

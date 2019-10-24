@@ -18,10 +18,12 @@ public abstract class BaseWeapon : BaseObject
     protected override void Awake()
     {
         base.Awake();
-
+        _gunT = _GOTransform.GetChild(2);
+        _muzzleFlash = GetComponentInChildren<ParticleSystem>();
+        _hitParticle = Resources.Load<GameObject>("Flare");
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         _rechargeTimer.Update();
 
