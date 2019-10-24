@@ -6,14 +6,14 @@ public sealed class Timer
     float _elapsed = -1;
     TimeSpan _duration;
 
-    void Start(float elapsed)
+    public void Start(float elapsed)
     {
         _elapsed = elapsed;
         _start = DateTime.Now;
         _duration = TimeSpan.Zero;
     }
 
-    void Update()
+    public void Update()
     {
         if (_elapsed > 0)
         {
