@@ -3,8 +3,9 @@
 public class Gun : BaseWeapon
 {
     private int _bulletCount = 30;
-    private float _shootDistance = 1000f;
+    private float _shootDistance = 100f;
     private float _damage = 20;
+    private float _currentDamage;
     private KeyCode reloadKey = KeyCode.R;
 
     void Start()
@@ -29,7 +30,7 @@ public class Gun : BaseWeapon
     {
         if (obj != null)
         {
-            obj.SetDamage(_damage);
+            obj.SetDamage(_currentDamage);
         }
     }
 
@@ -43,17 +44,17 @@ public class Gun : BaseWeapon
             Ray ray = new Ray(MainCamera.transform.position, MainCamera.transform.forward);
             if(Physics.Raycast(ray, out hit, _shootDistance))
             {
+                GameObject tempHit = Instantiate(_hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
+                tempHit.transform.parent = hit.transform;
                 if (hit.collider.tag == "Player")
                 {
                     return;
                 }
                 else
                 {
+                    _currentDamage = _damage * (1f - 0.1f*(Vector3.Distance(MainCamera.transform.position, tempHit.transform.position)/10f));
                     SetDamage(hit.collider.GetComponent<ISetDamage>());
                 }
-
-                GameObject tempHit = Instantiate(_hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
-                tempHit.transform.parent = hit.transform;
                 Destroy(tempHit, 0.5f);
             }
         }
