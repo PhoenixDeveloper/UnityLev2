@@ -22,6 +22,7 @@ public abstract class BaseObject : MonoBehaviour
     protected Rigidbody _rigidbody;
 
     protected Camera _mainCamera;
+    protected Canvas _canvasMainCamera;
 
     protected Animator _animator;
 
@@ -33,6 +34,7 @@ public abstract class BaseObject : MonoBehaviour
         _name = gameObject.name;
 
         _mainCamera = Camera.main;
+        _canvasMainCamera = Camera.main.GetComponentInChildren<Canvas>();
 
         if (GetComponent<Rigidbody>())
         {

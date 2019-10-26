@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : BaseObject
+public class Unit : BaseObject, ISetDamage
 {
     [SerializeField] private float _health;
 

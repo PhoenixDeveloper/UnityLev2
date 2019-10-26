@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fire
   - SliderFlashLight
+  - GunT
+  - Enemy
   layers:
   - Default
   - TransparentFX
